@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel = "stylesheet" type = "text/css" href = "/css/style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title th:text="${artist.artistName}"></title>
+</head>
+<body>
+    <header>
+    <h1><span id="artistName" th:text="${artist.artistName}"></span></h1>
+    <span id="artistId" th:text="${artist.id}" style="display:none"></span>
+    <a th:href="@{/artists}">View Artists</a>
+    </header>
+    <main>
+        <h3><span id="artistRecordLabel" th:text="${artist.artistRecordLabel}"></span></h3>
+        <!-- <span id="artistName" th:text="${artist.artistName}" style="display:none"></span> -->
+        <button id="edit-artist-button">Edit Artist</button>
+        <div id="modal-container-artist" class="hide">
+            <div id="modal-box-artist">
+                <label>Name: <input type="text" name="editedArtistName" /></label>
+                <label>Record Label: <input type="text" name="editedRecordLabel" /></label>
+                <button id="modal-submit-artist">Submit</button>
+            </div>
+        </div>
+        <ul class="albumsUl">
+            <li th:each="album : ${artist.albums}">
+                <span id="albumId" th:text="${album.id}" style="display:none"></span>
+                <a th:href="|@{/artists/}${artist.id}/album/${album.id}|"  th:text="|Album: ${album.albumName}|"></a>
+                <button class="deleteAlbum">Remove</button>
+            </li>
+        </ul>
+        <h3>Add Album</h3>
+        <label>
+            <input type="text" name="albumNameInput" placeholder="Name" />
+        </label>
+        <label>
+            <input type="text" name="albumReleaseDateInput" placeholder="Release Date" />
+        </label>
+        <label>
+            <input type="text" name="albumGenreInput" placeholder="Genre" />
+        </label>
+        <label>
+            <input type="text" name="albumImageInput" placeholder="Link to Album Cover" />
+        </label>
+        <label>
+            <input type="hidden" name="artistId" th:value="${artist.id}" />
+        </label>      
+        <button id="albumButton"> Add album</button>
+    </main>
+
+<script src="/js/deleteAlbum.js"></script>
+<script src="/js/addAlbum.js"></script>
+<script src="/js/editArtist.js"></script>
+</body>
+</html>

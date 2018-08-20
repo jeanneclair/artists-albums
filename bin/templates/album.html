@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel = "stylesheet" type = "text/css" href = "/css/style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title th:text="${album.albumName}"></title>
+</head>
+<body>
+    <header>
+    <h1><span id="albumName" th:text="${album.albumName}"></span></h1>
+    <a th:href="@{/artists}">View Artists</a>
+    </header>
+    <main>
+        <span id="albumId" th:text="${album.id}" style="display:none"></span>
+        <span id="artistId" th:text="${album.artist.id}" style="display:none"></span>
+        <span><img id="albumCoverImage" th:src="${album.albumCoverImage}" /></span>
+        <h3>Release Date:</h3>
+        <p id="albumReleaseDate" th:text="${album.albumReleaseDate}"></p>
+        <h3>Genre</h3>
+        <p id="albumGenre" th:text="${album.albumGenre}"></p>
+        <button id="edit-album-button">Edit Album</button>
+        <div id="modal-container-album" class="hide">
+            <div id="modal-box-album">
+                <label>Name: <input type="text" name="editedAlbumName" /></label>
+                <label>Cover Link: <input type="text" name="editedAlbumCoverImage" /></label>
+                <label>Release Date: <input type="text" name="editedReleaseDate" /></label>
+                <label>Genre: <input type="text" name="editedGenre" /></label>
+                <button id="modal-submit-album">Submit</button>
+            </div>
+        </div>
+
+        <h3>Comments</h3>
+        <ul class="albumCommentsUl">
+            <li th:each="albumComment : ${album.albumComments}">
+                <span th:text="${albumComment.text}"></span>
+            </li>
+        </ul>
+			<label>
+                <input type="text" name="albumCommentInput" placeholder="Album Comment" />
+            </label>
+                <button id="albumCommentButton"> Add comment</button>
+
+        <h3>Songs</h3>
+        <ul class="songsUl">
+            <li th:each="song : ${album.songs}">
+                <span id="songId" th:text="${song.id}" style="display:none"></span>
+                <a th:href="|@{/artists/}${album.artist.id}/album/${album.id}/song/${song.id}|"  th:text="${song.songName}"></a>
+                <button class="deleteSong">Remove</button>
+            </li>
+        </ul>
+
+        <h3>Add Song</h3>
+        <label>
+            <input type="text" name="songNameInput" placeholder="Name" />
+        </label>
+        <label>
+            <input type="text" name="songLengthInput" placeholder="Length" />
+        </label>
+        <label>
+            <input type="text" name="songRatingInput" placeholder="Rating" />
+        </label>
+        <label>
+            <input type="text" name="songVideoUrlInput" placeholder="Embedded YouTube Link" />
+        </label>
+        <br />
+        <br />
+        <label>
+            <textarea rows="10" cols="75" name="songLyricsInput" placeholder="Lyrics"></textarea>
+        </label>
+        <button id="songButton"> Add song</button>
+    </main>
+<script src="/js/albumComment.js"></script>
+<script src="/js/addSong.js"></script>
+<script src="/js/deleteSong.js"></script>
+<script src="/js/editAlbum.js"></script>
+
+</body>
+</html>
+

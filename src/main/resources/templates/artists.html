@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel = "stylesheet" type = "text/css" href = "/css/style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Artists</title>
+</head>
+<body>
+    <header>
+        <h1>Artists</h1>
+    </header>
+    <main>
+        <ul class="artistsUl">
+            <li th:each="artist : ${artists}">
+                <span id="artistId" th:text="${artist.id}" style="display:none"></span>
+                <a th:href="|@{/artists/}${artist.id}|" th:text="${artist.artistName}"></a>
+                <p th:text="${artist.artistRecordLabel}"></p>
+                <button class="deleteArtist">Remove</button>
+            </li>
+        </ul>
+        <h3>Add Artist</h3>
+            <label>
+                <input type="text" name="artistNameInput" placeholder="Name" />
+            </label>
+            <label>
+                <input type="text" name="artistRecordLabelInput" placeholder="Record Label" />
+            </label>
+            
+                <button id="artistButton"> Add artist</button>
+
+    </main>
+
+<script src="/js/addArtist.js"></script>
+<script src="/js/deleteArtist.js"></script>
+</body>
+</html>

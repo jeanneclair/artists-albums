@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel = "stylesheet" type = "text/css" href = "/css/style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title th:text="${song.songName}"></title>
+</head>
+<body>
+    <header>
+    <h1 th:text="${song.songName}"></h1>
+    <a th:href="@{/artists}">View Artists</a>
+    </header>
+    <main>
+        <span id="songId" th:text="${song.id}" style="display:none"></span>
+        <h3>Song Length</h3>
+        <p th:text="${song.songLength}|"></p>
+        <h3>Song Rating</h3>
+        <p th:text="${song.songRating}"></p>
+        <a id="video" th:text="${song.songVideoUrl}"></a>
+        <div id="lyrics">
+        <h3>Song Lyrics</h3>            
+        <p id="songLyrics" th:utext="${song.songLyrics}"></p>
+        </div>
+        <button id="editLyricsButton">Edit Lyrics</button>
+        <span id="songId" th:text="${song.id}" style="display:none"></span>
+        <span id="songName" th:text="${song.songName}" style="display:none"></span>
+        <span id="songLength" th:text="${song.songLength}" style="display:none"></span>
+        <span id="songRating" th:text="${song.songRating}" style="display:none"></span>
+        <span id="songVideoUrl" th:utext="${song.songVideoUrl}" style="display:none"></span>
+        <span id="albumId" th:text="${song.album.id}" style="display:none"></span>
+
+        <div id="modal-container" class="hide">
+            <div id="modal-box">
+                <label>Edit Lyrics: <textarea rows="10" cols="75" name="editedLyrics"></textarea></label>
+                <!-- <label>Edit Lyrics: <textarea name="editedLyrics" cols="40" rows="10" /></label> -->
+                <button id="modal-submit">Submit</button>
+            </div>
+        </div>
+        
+        <h3>Comments</h3>
+        <ul class="songCommentsUl">
+            <li th:each="songComment : ${song.songComments}">
+                <span th:text="${songComment.text}"></span>
+            </li>
+        </ul>
+			<label>
+                <input type="text" name="songCommentInput" placeholder="Song Comment" />
+            </label>
+                <button id="songCommentButton"> Add comment</button>
+
+    </main>
+<script src="/js/songComment.js"></script>
+<script src="/js/editLyrics.js"></script>
+</body>
+</html>

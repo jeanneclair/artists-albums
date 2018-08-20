@@ -1,0 +1,79 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+.albumsUl {
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+
+#artists-button {
+    padding: 1vh;
+    background-color: black;
+    color: white;
+    border: none;
+
+}
+
+
+.deleteArtist {
+    margin-bottom: 2vh;
+}
+
+/* .editedLyrics {
+    height: 500px;
+} */
+
+h3 {
+    margin-top: 2vh;
+}
+
+header {
+    background-color: black;
+    color: white;
+    padding-left: 5vw;
+}
+
+header a {
+    color: white;
+}
+
+.hide {
+    display: none;
+}
+
+img {
+    width: 250px;
+}
+
+#index-body {
+    background-image: url("/images/background.jpg");
+    background-position: center; 
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#lyrics {
+    content: 'A\A';
+    white-space: pre;
+    /* width: 50vw; */
+}
+
+main {
+    padding-left: 10vw;
+    padding-top: 3vh;
+    font-family: sans-serif;
+    /* background-image: url(/images/background.jpg);
+    background-position: center; 
+    background-repeat: repeat-y; */
+}
+
+/* #songLyrics {
+    content: 'A\A';
+    white-space: pre;
+} */
